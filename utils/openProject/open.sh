@@ -1,0 +1,1 @@
+echo "Hello, this is my first shell script on a Mac!"
