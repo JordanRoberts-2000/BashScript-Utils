@@ -9,44 +9,31 @@ title(){
 EOF
 }
 
-openVscode(){
-    if command -v code &> /dev/null; then
-        if [ -d "$1" ]; then
-            code "$1"
-        else
-            echo "SRC ERROR: path to vscode doesn't exist"
-            exit
-        fi
-    else
-        echo "Vscode needs to be added to path"
-        exit
-    fi
-}
+#openVscode
+source "/Users/jordanroberts/Documents/dev/Projects/main/StrawrTerminal/StrawrUtils/utils/openVscode.sh"
 
 mainMenu(){
-    OPTIONS=("Open" "Create" "Playground" "temporary")
+    OPTIONS=("Open" "Create" "Playground" "Temporary")
     PS3="Select an option (1-${#OPTIONS[@]}): "
     select option in "${OPTIONS[@]}"; do
         case $REPLY in
             1)
-                echo "You selected Option 1"
-                break
+                source "/Users/jordanroberts/Documents/dev/Projects/main/StrawrTerminal/StrawrUtils/features/open.sh"
+                open
             ;;
             2)
-                echo "You selected Option 2"
-                break
+                source "/Users/jordanroberts/Documents/dev/Projects/main/StrawrTerminal/StrawrUtils/features/create.sh"
+                create
             ;;
             3)
-                PLAYGROUND_PATH="/Users/jordanroberts/Documents/dev/Playground"
-                openVscode $PLAYGROUND_PATH
-                break
+               source "/Users/jordanroberts/Documents/dev/Projects/main/StrawrTerminal/StrawrUtils/features/playground.sh"
+               playground
             ;;
             4)
-                echo "Exiting the script."
-                exit
+                source "/Users/jordanroberts/Documents/dev/Projects/main/StrawrTerminal/StrawrUtils/features/temporary.sh"
+                temporary
             ;;
             *)
-                echo "Invalid choice. Please try again."
                 break
             ;;
         esac
