@@ -10,7 +10,7 @@ EOF
 }
 
 #openVscode
-source "/Users/jordanroberts/Documents/dev/Projects/main/StrawrTerminal/StrawrUtils/utils/openVscode.sh"
+source "/Users/jordanroberts/Documents/dev/Projects/main/StrawrTerminal/StrawrUtils/utils/utils.sh"
 
 mainMenu(){
     OPTIONS=("Open" "Create" "Playground" "Temporary")

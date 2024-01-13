@@ -2,28 +2,6 @@
 #error handling
 TEMP_FOLDER_PATH=/Users/jordanroberts/Documents/temp
 
-createTempEnv(){
-    while true; do
-        title
-        echo enter name:
-        read NEW_TEMP_NAME
-        VALID_INPUT_REGEX="^[a-zA-Z0-9&-]+$"
-        if [[ -n "$NEW_TEMP_NAME" && "$NEW_TEMP_NAME" =~ $VALID_INPUT_REGEX ]]; then
-            # Check if the directory doesn't already exist
-            if [ ! -d "$TEMP_FOLDER_PATH/$NEW_TEMP_NAME" ]; then
-                mkdir "$TEMP_FOLDER_PATH/$NEW_TEMP_NAME"
-                openVscode "$TEMP_FOLDER_PATH/$NEW_TEMP_NAME"
-                break
-            else
-                echo "Error: Directory '$NEW_TEMP_NAME' already exists at '$TEMP_FOLDER_PATH'"
-            fi
-        else
-            echo "Error: Invalid input. Please enter only letters, numbers, -, or & and ensure it is not empty."
-        fi
-    done
-    break 2
-}
-
 openTempEnv(){
     if [ -d "$TEMP_FOLDER_PATH" ]; then
         directories=("$TEMP_FOLDER_PATH"/*)
@@ -59,7 +37,7 @@ temporary(){
         select option in "${TEMPORARY_LIST[@]}"; do
             case $REPLY in
                 1)
-                    createTempEnv
+                    createProject $TEMP_FOLDER_PATH
                 ;;
                 2)
                     break 2
