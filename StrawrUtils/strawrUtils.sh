@@ -3,16 +3,7 @@
 DEV_FOLDER_PATH=/Users/jordanroberts/Documents/dev/Projects
 TEMP_FOLDER_PATH="/Users/jordanroberts/Documents/temp"
 
-title(){
-    printf "\033c"
-    cat << EOF
-=====================================
-= Strawr Terminal Utilities         =
-=====================================
-EOF
-}
-
-#openVscode
+#utils
 source "/Users/jordanroberts/Documents/dev/Projects/main/StrawrTerminal/StrawrUtils/utils/utils.sh"
 
 mainMenu(){
