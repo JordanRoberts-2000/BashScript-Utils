@@ -1,7 +1,3 @@
-#add back out of create
-#error handling
-DEV_FOLDER_PATH=/Users/jordanroberts/Documents/dev/Projects
-
 create(){
     while true; do
         TEMPORARY_LIST=("Main" "Side" "Web" "Other" "Back")

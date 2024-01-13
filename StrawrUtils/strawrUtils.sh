@@ -1,5 +1,8 @@
 #!/bin/bash
 
+DEV_FOLDER_PATH=/Users/jordanroberts/Documents/dev/Projects
+TEMP_FOLDER_PATH="/Users/jordanroberts/Documents/temp"
+
 title(){
     printf "\033c"
     cat << EOF
