@@ -1,3 +1,9 @@
+pressEnterToContinue(){
+    title
+    echo $1
+    read -p "Press Enter to continue"
+}
+
 openVscode(){
     if command -v code &> /dev/null; then
         if [ -d "$1" ]; then
@@ -40,27 +46,28 @@ selectDirsFromPath(){
         directories=("${directories[@]#./}")
         if [ ! ${#directories[@]} -eq 0 ]; then
             directories+=("Back")
-            title
-            PS3="Select an option (1-${#directories[@]}): "
-            select option in "${directories[@]##*/}"; do
-                if [ -n "$option" ]; then
-                    if [ "$option" == "Back" ]; then
-                        break 2
+            while true; do
+                title
+                PS3="Select an option (1-${#directories[@]}): "
+                select option in "${directories[@]##*/}"; do
+                    if [ -n "$option" ]; then
+                        if [ "$option" == "Back" ]; then
+                            break 2
+                        else
+                            openVscode "$1/$option"
+                            break 4
+                        fi
                     else
-                        openVscode "$1/$option"
                         break
                     fi
-                else
-                    echo "Invalid choice. Please try again."
-                fi
+                done
             done
         else
-            title
-            echo "Currently no directories"
-            read -p "Press Enter to continue"
+            pressEnterToContinue "Currently no directories"
         fi
     else
         echo Error: Temp directory path invalid
+        exit
     fi
-    break 2
+    break
 }
