@@ -7,7 +7,7 @@ installTailwind(){
 }
 
 addToCss(){
-    STYLES_CSS_PATH=$(find "$CURRENT_PATH/src" -type f -name "styles.css")
+    STYLES_CSS_PATH=$(find "$CURRENT_PATH/src" -type f -name "index.css")
     top_content='@tailwind base;\n@tailwind components;\n@tailwind utilities;'
     # Check if the file was found
     if [ -n "$STYLES_CSS_PATH" ]; then
